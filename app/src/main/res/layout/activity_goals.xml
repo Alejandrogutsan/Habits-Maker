@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".GoalsActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:gravity="center"
+        android:text="Goals"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="59dp"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="40dp"
+        android:background="#F7F1F1"
+        android:gravity="center"
+        android:text="Do your habit for 22 days and get a bronze medal! Warning: Miss a day, the count will reset to day 1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+    <FrameLayout
+        android:id="@+id/container2"
+        android:layout_width="match_parent"
+        android:layout_height="500dp">
+
+    </FrameLayout>
+
+</LinearLayout>
