@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
- * Collaborators: Alan Pintor, . . . YES, THIS IS HOW YOU DO IT GUYS !
+ * Collaborators: Alan Pintor, . . . YES, THIS IS HOW YOU pull and push GUYS !
  */
 
 public class MainActivity extends FragmentActivity {
