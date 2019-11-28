@@ -14,6 +14,10 @@ import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+/**
+ * Collaborators: Alan Pintor, . . .
+ */
+
 public class MainActivity extends FragmentActivity {
     public static final int CODE = 123;
     public DatabaseHandler databaseHandler;
