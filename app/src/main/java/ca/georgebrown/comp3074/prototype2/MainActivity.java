@@ -69,7 +69,8 @@ public class MainActivity extends FragmentActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
+                startActivity(intent);
             }
         });
         goals.setOnClickListener(new View.OnClickListener() {
@@ -90,13 +91,6 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Settings.class);
-                startActivity(intent);
-            }
-        });
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
                 startActivity(intent);
             }
         });

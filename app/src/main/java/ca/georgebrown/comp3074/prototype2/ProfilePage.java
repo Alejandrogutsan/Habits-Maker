@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ProfilePage extends AppCompatActivity {
 
-    public DatabaseHandler databaseHandler;
+
 
     ImageButton home;
     ImageButton profile;
