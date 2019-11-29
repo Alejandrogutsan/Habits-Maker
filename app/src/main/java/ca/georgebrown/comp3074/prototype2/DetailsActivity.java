@@ -11,8 +11,18 @@ import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class DetailsActivity extends AppCompatActivity {
     public DatabaseHandler handler;
+
+    // Doing: let the checkBox be checked only once a day
+    Date toDay = new Date();
+    Date yesterday = new Date(System.currentTimeMillis()-24*60*60*1000);
+    // TODO: when creating a habit lastDateDone = yesterday and saved in the database
+    Date lastDateDone = yesterday;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +35,7 @@ public class DetailsActivity extends AppCompatActivity {
         Button btnUpdate = findViewById(R.id.btnUpdate);
         final CheckBox checkBoxDone = findViewById(R.id.cb_done);
         final ProgressBar progressBar = findViewById(R.id.progressBar);
+        final TextView message = findViewById(R.id.checkedMessage);
 
         dayNum.setText("DAY " + getIntent().getStringExtra("day_count"));
         habitName.setText(getIntent().getStringExtra("name"));
@@ -43,12 +54,24 @@ public class DetailsActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        //TODO add current date (if checkBox=true in current day locked checkBox until next day
+
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = getIntent().getStringExtra("name");
                 int count = Integer.parseInt(getIntent().getStringExtra("day_count"));
                 if (checkBoxDone.isChecked()) {
+
+
+                    if(lastDateDone == yesterday){
+                        lastDateDone = toDay;
+                        message.setText("Well done");
+                    }else{
+                        message.setText("Already done!");
+                    }
+
 
                     if (count < 22) {
                         count = count + 1;
