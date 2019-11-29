@@ -7,7 +7,7 @@
     tools:context=".ProfilePage">
 
     <ImageButton
-        android:id="@+id/imageButtonSettings2"
+        android:id="@+id/imageButtonSettings"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginTop="21dp"
@@ -18,11 +18,11 @@
         android:background="@drawable/setting"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonChallenge2"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonChallenge"
         app:layout_constraintTop_toBottomOf="@+id/btnCancel" />
 
     <ImageButton
-        android:id="@+id/imageButtonHome2"
+        android:id="@+id/imageButtonHome"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginStart="10dp"
@@ -33,12 +33,12 @@
         android:layout_marginBottom="5dp"
         android:background="@drawable/home"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButtonProfile2"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonProfile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnUpdate" />
 
     <ImageButton
-        android:id="@+id/imageButtonProfile2"
+        android:id="@+id/imageButtonProfile"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginTop="21dp"
@@ -48,12 +48,12 @@
         android:layout_toRightOf="@+id/imageButtonHome"
         android:background="@drawable/profile"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButtonGoals2"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonHome2"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonGoals"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonHome"
         app:layout_constraintTop_toBottomOf="@+id/btnUpdate" />
 
     <ImageButton
-        android:id="@+id/imageButtonGoals2"
+        android:id="@+id/imageButtonGoals"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginTop="90dp"
@@ -63,12 +63,12 @@
         android:layout_toRightOf="@+id/imageButtonProfile"
         android:background="@drawable/goal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButtonChallenge2"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonProfile2"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonChallenge"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonProfile"
         app:layout_constraintTop_toBottomOf="@+id/rdlFemale" />
 
     <ImageButton
-        android:id="@+id/imageButtonChallenge2"
+        android:id="@+id/imageButtonChallenge"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginTop="21dp"
@@ -78,8 +78,8 @@
         android:layout_toRightOf="@+id/imageButtonGoals"
         android:background="@drawable/challenge"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButtonSettings2"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonGoals2"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonSettings"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonGoals"
         app:layout_constraintTop_toBottomOf="@+id/btnCancel" />
 
     <ImageView
