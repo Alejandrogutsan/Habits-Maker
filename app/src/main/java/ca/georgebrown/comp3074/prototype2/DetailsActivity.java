@@ -21,6 +21,7 @@ public class DetailsActivity extends AppCompatActivity {
     Date toDay = new Date();
     Date yesterday = new Date(System.currentTimeMillis()-24*60*60*1000);
     // TODO: when creating a habit lastDateDone = yesterday and saved in the database
+    // TODO: when checkBox is checked update lastDateDone= toDay and saved in the database
     Date lastDateDone = yesterday;
 
 
