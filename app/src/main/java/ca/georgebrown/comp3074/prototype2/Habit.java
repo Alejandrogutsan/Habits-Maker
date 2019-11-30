@@ -8,7 +8,7 @@ public class Habit {
     private int day_count;
 
     //to let checkBoxDone be use once a day - Alan
-    Date lastDateDone = new Date(System.currentTimeMillis()-24*60*60*1000); //yesterday
+    Date lastDateDone;
 
     public Habit(String name, String type, int day_count, Date lastDateDone) {
         this.name = name;

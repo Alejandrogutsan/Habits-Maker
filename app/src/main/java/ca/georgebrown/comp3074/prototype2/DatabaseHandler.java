@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.Date;
+
 public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "MyDatabase_habits";
     public static final int DATABASE_VERSION = 1;
@@ -22,7 +24,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE Habits( ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT UNIQUE, TYPE TEXT, DAY_COUNT INTEGER)");
+        db.execSQL("CREATE TABLE Habits( ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT UNIQUE, TYPE TEXT, DAY_COUNT INTEGER, LASTDATE DATE)"); //LASTDATE added to let checkBoxDone be use once a day - Alan
         db.execSQL("CREATE TABLE User( ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, EMAIL EMAIL UNIQUE, PASSWORD PASSWORD, GENDER TEXT)");
     }
 
@@ -33,12 +35,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insert_habit(String name, String type, int count) {
+    public void insert_habit(String name, String type, int count, Date lastDateDone) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("NAME", name);
         contentValues.put("TYPE", type);
         contentValues.put("DAY_COUNT", count);
+
+        //to let checkBoxDone be use once a day - Alan
+        contentValues.put("LASTDATE", lastDateDone.toString());
+
         db.insertOrThrow("Habits", "", contentValues);
     }
 

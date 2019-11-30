@@ -22,7 +22,6 @@ public class DetailsActivity extends AppCompatActivity {
     Date yesterday = new Date(System.currentTimeMillis()-24*60*60*1000);
     // TODO: when creating a habit lastDateDone = yesterday and saved in the database
     // TODO: when checkBox is checked update lastDateDone= toDay and saved in the database
-    Date lastDateDone = yesterday;
 
 
     @Override
@@ -65,14 +64,14 @@ public class DetailsActivity extends AppCompatActivity {
                 int count = Integer.parseInt(getIntent().getStringExtra("day_count"));
                 if (checkBoxDone.isChecked()) {
 
-
+                    /**
                     if(lastDateDone == yesterday){
                         lastDateDone = toDay;
                         message.setText("Well done");
                     }else{
                         message.setText("Already done!");
                     }
-
+                    */
 
                     if (count < 22) {
                         count = count + 1;

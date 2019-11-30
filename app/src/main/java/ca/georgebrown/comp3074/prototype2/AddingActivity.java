@@ -13,6 +13,8 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Date;
+
 public class AddingActivity extends AppCompatActivity {
     public DatabaseHandler handler;
     CheckBox checkBoxBuild;
@@ -58,11 +60,15 @@ public class AddingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String name = editText.getText().toString();
 
+                //to let checkBoxDone be use once a day - Alan
+                Date lastDateDone = new Date(System.currentTimeMillis()-24*60*60*1000); //yesterday
+
                 if (TextUtils.isEmpty(name) || !checkBoxBuild.isChecked() && !checkBoxQuit.isChecked()) {
                     Toast.makeText(v.getContext(), "Empty inputs", Toast.LENGTH_SHORT).show();
                 } else {
                     try {
-                        handler.insert_habit(name, type, 1);
+                        handler.insert_habit(name, type, 1, lastDateDone);
+
                         Intent intent = new Intent();
                         if (checkBoxBuild.isChecked()) {
                             intent.putExtra("checkbox", checkBoxBuild.getText().toString());
