@@ -35,7 +35,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insert_habit(String name, String type, int count, Date lastDateDone) {
+    public void insert_habit(String name, String type, int count) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("NAME", name);
@@ -43,7 +43,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         contentValues.put("DAY_COUNT", count);
 
         //to let checkBoxDone be use once a day - Alan
-        contentValues.put("LASTDATE", lastDateDone.toString());
+        //contentValues.put("LASTDATE", lastDateDone.toString());
 
         db.insertOrThrow("Habits", "", contentValues);
     }
