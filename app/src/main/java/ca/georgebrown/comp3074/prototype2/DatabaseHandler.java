@@ -26,12 +26,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE Habits( ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT UNIQUE, TYPE TEXT, DAY_COUNT INTEGER, LASTDATE DATE)"); //LASTDATE added to let checkBoxDone be use once a day - Alan
         db.execSQL("CREATE TABLE User( ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, EMAIL EMAIL UNIQUE, PASSWORD PASSWORD, GENDER TEXT)");
+        db.execSQL("CREATE TABLE Settings(REMINDERS INTEGER, TIPS INTEGER, RECOMMENDATIONS INTEGER, CHALLENGERS INTEGER)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS Habits");
         db.execSQL("DROP TABLE IF EXISTS User");
+        db.execSQL("DROP TABLE IF EXISTS Settings");
         onCreate(db);
     }
 
@@ -93,4 +95,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (count > 0) {return true;}
         else {return false;}
     }
+
+
+
 }
