@@ -56,8 +56,8 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(view.getContext(), AddingActivity.class);
-                startActivityForResult(i, 1);
+            Intent i = new Intent(view.getContext(), AddingActivity.class);
+            startActivityForResult(i, 1);
             }
         });
 
@@ -70,29 +70,29 @@ public class MainActivity extends FragmentActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
-                startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
+            startActivity(intent);
             }
         });
         goals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), GoalsActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), GoalsActivity.class);
+            startActivity(intent);
             }
         });
         challenge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ChallengeActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), ChallengeActivity.class);
+            startActivity(intent);
             }
         });
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Settings.class);
-                startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), Settings.class);
+            startActivity(intent);
             }
         });
     }
