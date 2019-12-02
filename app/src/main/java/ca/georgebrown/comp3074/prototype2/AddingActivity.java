@@ -7,12 +7,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class AddingActivity extends AppCompatActivity {
@@ -20,6 +24,8 @@ public class AddingActivity extends AppCompatActivity {
     CheckBox checkBoxBuild;
     CheckBox checkBoxQuit;
     String type = "";
+
+    ListView recommentations; // Alan
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,25 @@ public class AddingActivity extends AppCompatActivity {
         Button btnSave = findViewById(R.id.btnSave);
         checkBoxBuild = findViewById(R.id.cb_build);
         checkBoxQuit = findViewById(R.id.cb_quit);
+        recommentations = findViewById(R.id.listViewRecommendations); //Alan
+
+        final ArrayList<String> recommentationsList = new ArrayList<>();
+        recommentationsList.add("one");
+        recommentationsList.add("two");
+        recommentationsList.add("tres");
+        recommentationsList.add("fuor");
+        recommentationsList.add("five");
+        recommentationsList.add("seis");
+        ArrayAdapter arrayAdapter = new ArrayAdapter(
+                this, android.R.layout.simple_list_item_activated_1,recommentationsList);
+        recommentations.setAdapter(arrayAdapter);
+        recommentations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //editText = recommentationsList.get(position).toString();
+            }
+        });
+
 
         checkBoxBuild.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

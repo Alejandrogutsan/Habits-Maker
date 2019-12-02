@@ -17,6 +17,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String col_2 = "name";
     public static final String col_3 = "email";
     public static final String col_4 = "password";
+    //to let checkBoxDone be use once a day - Alan
+    Date lastDateDone;
+    Date yesterday = new Date(System.currentTimeMillis()-24*60*60*1000);
 
     public DatabaseHandler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -24,7 +27,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE Habits( ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT UNIQUE, TYPE TEXT, DAY_COUNT INTEGER, LASTDATE DATE)"); //LASTDATE added to let checkBoxDone be use once a day - Alan
+        db.execSQL("CREATE TABLE Habits( ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT UNIQUE, TYPE TEXT, DAY_COUNT INTEGER, LASTDATE DATETIME)"); //LASTDATE added to let checkBoxDone be use once a day - Alan
         db.execSQL("CREATE TABLE User( ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, EMAIL EMAIL UNIQUE, PASSWORD PASSWORD, GENDER TEXT)");
         db.execSQL("CREATE TABLE Settings(ID INTEGER PRIMARY KEY, DISABLE_ALL INTEGER, REMINDERS INTEGER, TIPS INTEGER, RECOMMENDATIONS INTEGER, CHALLENGERS INTEGER)");
     }
@@ -43,9 +46,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         contentValues.put("NAME", name);
         contentValues.put("TYPE", type);
         contentValues.put("DAY_COUNT", count);
-
         //to let checkBoxDone be use once a day - Alan
+        lastDateDone = yesterday;
         //contentValues.put("LASTDATE", lastDateDone.toString());
+        contentValues.put("LASTDATE",lastDateDone.toString());
 
         db.insertOrThrow("Habits", "", contentValues);
     }

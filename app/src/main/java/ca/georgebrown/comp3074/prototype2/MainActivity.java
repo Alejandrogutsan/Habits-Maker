@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
- * Collaborators: Alan Pintor, . . . YES, THIS IS HOW YOU pull and push GUYS !
+ * Collaborators: Alan Pintor, . . .
  */
 
 public class MainActivity extends FragmentActivity {
@@ -45,6 +45,7 @@ public class MainActivity extends FragmentActivity {
 
         databaseHandler = new DatabaseHandler(this, DatabaseHandler.DATABASE_NAME, null, DatabaseHandler.DATABASE_VERSION);
         int count = databaseHandler.getAllHabits().getCount();
+
 
         TextView listText = findViewById(R.id.you_have_listText);
         listText.setText("You have a list of " + count + " habits");
