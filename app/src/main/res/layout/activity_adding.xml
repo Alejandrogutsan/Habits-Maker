@@ -7,14 +7,20 @@
     android:orientation="vertical"
     tools:context=".AddingActivity">
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Make it simple to make it real"
+        android:layout_margin="16dp"/>
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Enter Name"
-         />
+        android:hint="Enter a habit"
+        android:inputType="textPersonName" />
     <androidx.appcompat.widget.AppCompatCheckBox
         android:id="@+id/cb_build"
         android:layout_width="match_parent"
@@ -37,7 +43,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Habit Recommendations:"
+        android:text="Or select one of our recommendations:"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"/>

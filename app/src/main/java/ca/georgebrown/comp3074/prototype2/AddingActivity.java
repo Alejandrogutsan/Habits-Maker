@@ -39,19 +39,23 @@ public class AddingActivity extends AppCompatActivity {
         recommentations = findViewById(R.id.listViewRecommendations); //Alan
 
         final ArrayList<String> recommentationsList = new ArrayList<>();
-        recommentationsList.add("one");
-        recommentationsList.add("two");
-        recommentationsList.add("tres");
-        recommentationsList.add("fuor");
-        recommentationsList.add("five");
-        recommentationsList.add("seis");
+        recommentationsList.add("Take a glass of water first thing in the morning");
+        recommentationsList.add("Do 5 push-ups");
+        recommentationsList.add("Meditate (do 5 minutes breathing exercise)");
+        recommentationsList.add("Plan your next day");
+        recommentationsList.add("One cigarette less than usual");
+        recommentationsList.add("Read a book for 5 minutes");
+        recommentationsList.add("One apple a day keeps the doctor away");
+        recommentationsList.add("Help with the dishes");
+        recommentationsList.add("Take a short walk today");
         ArrayAdapter arrayAdapter = new ArrayAdapter(
                 this, android.R.layout.simple_list_item_activated_1,recommentationsList);
         recommentations.setAdapter(arrayAdapter);
         recommentations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            //recommendations from listView to editText - Alan
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //editText = recommentationsList.get(position).toString();
+                editText.setText(recommentationsList.get(position));
             }
         });
 
