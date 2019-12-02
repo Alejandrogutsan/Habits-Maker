@@ -26,7 +26,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE Habits( ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT UNIQUE, TYPE TEXT, DAY_COUNT INTEGER, LASTDATE DATE)"); //LASTDATE added to let checkBoxDone be use once a day - Alan
         db.execSQL("CREATE TABLE User( ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, EMAIL EMAIL UNIQUE, PASSWORD PASSWORD, GENDER TEXT)");
-        db.execSQL("CREATE TABLE Settings(REMINDERS INTEGER, TIPS INTEGER, RECOMMENDATIONS INTEGER, CHALLENGERS INTEGER)");
+        db.execSQL("CREATE TABLE Settings(ID INTEGER PRIMARY KEY, DISABLE_ALL INTEGER, REMINDERS INTEGER, TIPS INTEGER, RECOMMENDATIONS INTEGER, CHALLENGERS INTEGER)");
     }
 
     @Override
@@ -96,6 +96,54 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         else {return false;}
     }
 
+    public Cursor getAllSettings() {
+        SQLiteDatabase db = getReadableDatabase();
+        final String query = "SELECT * FROM Settings";
+        Cursor c = db.rawQuery(query, null);
+        return c;
+    }
 
+    public long insert_Settings(int dAll, int reminders, int tips, int recommendations, int challengers) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("DISABLE_ALL", dAll);
+        contentValues.put("REMINDERS", reminders);
+        contentValues.put("TIPS", tips);
+        contentValues.put("RECOMMENDATIONS", recommendations);
+        contentValues.put("CHALLENGERS", challengers);
+
+        long ans = db.insertOrThrow("Settings", "", contentValues);
+
+        return ans;
+    }
+
+    public long update_All(int id, int dAll, int reminders, int tips, int recommendations, int challengers) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("DISABLE_ALL", dAll);
+        contentValues.put("REMINDERS", reminders);
+        contentValues.put("TIPS", tips);
+        contentValues.put("RECOMMENDATIONS", recommendations);
+        contentValues.put("CHALLENGERS", challengers);
+        String whereClause = "ID=?";
+        String whereArgs[] = {String.valueOf(id)};
+
+        long ans = db.update("Settings", contentValues, whereClause, whereArgs);
+
+        return ans;
+    }
+
+    public long update_Rem(int id, int onOff) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("REMINDERS", onOff);
+        String whereClause = "ID=?";
+        String whereArgs[] = {String.valueOf(id)};
+
+        long ans = db.update("Settings", contentValues, whereClause, whereArgs);
+        return ans;
+    }
 
 }
