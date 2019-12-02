@@ -20,7 +20,7 @@ public class DetailsActivity extends AppCompatActivity {
     // Doing: let the checkBox be checked only once a day
     Date toDay = new Date();
 
-    // TODO: when creating a habit lastDateDone = yesterday and saved in the database
+    // TODO: when creating a habit save lastDateDone in the database
     // TODO: when checkBox is checked update lastDateDone= toDay and saved in the database
 
 
@@ -35,10 +35,13 @@ public class DetailsActivity extends AppCompatActivity {
         Button btnUpdate = findViewById(R.id.btnUpdate);
         final CheckBox checkBoxDone = findViewById(R.id.cb_done);
         final ProgressBar progressBar = findViewById(R.id.progressBar);
+        // Alan's
         final TextView message = findViewById(R.id.checkedMessage);
 
         dayNum.setText("DAY " + getIntent().getStringExtra("day_count"));
         habitName.setText(getIntent().getStringExtra("name"));
+        // Alan's
+        message.setText("Gettin lastDayDone from db: "+getIntent().getStringExtra("lastDayDone"));
 
         progressBar.setMax(22);
         progressBar.setProgress(Integer.parseInt(getIntent().getStringExtra("day_count")));
