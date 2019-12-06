@@ -11,6 +11,11 @@ import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,7 +23,14 @@ public class DetailsActivity extends AppCompatActivity {
     public DatabaseHandler handler;
 
     // Doing: let the checkBox be checked only once a day
-    Date toDay = new Date();
+    //to let checkBoxDone be use once a day - Alan
+    Date lastDateDone;
+    Date yesterday = new Date(System.currentTimeMillis()-24*60*60*1000);
+    String strDate = DateFormat.getDateInstance().format(yesterday);
+    String date = "Dec 4, 2019";
+
+
+
 
     // TODO: when creating a habit save lastDateDone in the database
     // TODO: when checkBox is checked update lastDateDone= toDay and saved in the database
@@ -41,7 +53,19 @@ public class DetailsActivity extends AppCompatActivity {
         dayNum.setText("DAY " + getIntent().getStringExtra("day_count"));
         habitName.setText(getIntent().getStringExtra("name"));
         // Alan's
-        message.setText("Gettin lastDayDone from db: "+getIntent().getStringExtra("lastDayDone"));
+        handler.getAllHabits();
+
+        message.setText("Gettin lastDayDone from db: "+ getIntent().getStringExtra("lastDate"));
+        try {
+            String test = getIntent().getStringExtra("lastDate");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = dateFormat.parse(test);
+            message.setText("Gettin lastDayDone from db: "+ getIntent().getStringExtra("lastDate"));
+        }
+        catch (ParseException e) {
+
+        }
+
 
         progressBar.setMax(22);
         progressBar.setProgress(Integer.parseInt(getIntent().getStringExtra("day_count")));

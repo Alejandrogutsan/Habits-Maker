@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -19,7 +20,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String col_4 = "password";
     //to let checkBoxDone be use once a day - Alan
     Date lastDateDone;
-    Date yesterday = new Date(System.currentTimeMillis()-24*60*60*1000);
 
     public DatabaseHandler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -27,7 +27,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE Habits( ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT UNIQUE, TYPE TEXT, DAY_COUNT INTEGER, LASTDATE DATETIME)"); //LASTDATE added to let checkBoxDone be use once a day - Alan
+        db.execSQL("CREATE TABLE Habits( ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT UNIQUE, TYPE TEXT, DAY_COUNT INTEGER, LASTDATE DATE)"); //TEXT added to let checkBoxDone be use once a day - Alan
         db.execSQL("CREATE TABLE User( ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, EMAIL EMAIL UNIQUE, PASSWORD PASSWORD, GENDER TEXT)");
         db.execSQL("CREATE TABLE Settings(ID INTEGER PRIMARY KEY, DISABLE_ALL INTEGER, REMINDERS INTEGER, TIPS INTEGER, RECOMMENDATIONS INTEGER, CHALLENGERS INTEGER)");
     }
@@ -40,18 +40,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insert_habit(String name, String type, int count) {
+    public long insert_habit(String name, String type, int count) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("NAME", name);
         contentValues.put("TYPE", type);
         contentValues.put("DAY_COUNT", count);
-        //to let checkBoxDone be use once a day - Alan
-        lastDateDone = yesterday;
-        //contentValues.put("LASTDATE", lastDateDone.toString());
-        contentValues.put("LASTDATE",lastDateDone.toString());
 
-        db.insertOrThrow("Habits", "", contentValues);
+        //to let checkBoxDone be use once a day - Alan
+        Date yesterday = new Date(System.currentTimeMillis()-24*60*60*1000);
+
+        // Google java date object set time to 0s
+        // Try using a Calendar object to get the current date and remove the time
+        // Figure out how to go to yesyerday
+
+        lastDateDone = yesterday;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        contentValues.put("LASTDATE", dateFormat.format(lastDateDone));
+
+        return db.insertOrThrow("Habits", "", contentValues);
     }
 
     public Cursor getAllHabits() {
@@ -107,10 +114,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return c;
     }
 
-    public long insert_Settings(int dAll, int reminders, int tips, int recommendations, int challengers) {
+    public long insert_Settings(int id, int dAll, int reminders, int tips, int recommendations, int challengers) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
+        contentValues.put("ID", id);
         contentValues.put("DISABLE_ALL", dAll);
         contentValues.put("REMINDERS", reminders);
         contentValues.put("TIPS", tips);

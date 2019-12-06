@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.Date;
+
 /**
  * Collaborators: Alan Pintor, . . .
  */
@@ -27,6 +29,10 @@ public class MainActivity extends FragmentActivity {
     ImageButton goals;
     ImageButton challenge;
     ImageButton settings;
+
+    //to let checkBoxDone be use once a day - Alan
+    Date lastDateDone;
+    Date yesterday = new Date(System.currentTimeMillis()-24*60*60*1000);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

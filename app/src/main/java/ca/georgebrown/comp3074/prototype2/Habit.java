@@ -6,15 +6,17 @@ public class Habit {
     private String name;
     private String type;
     private int day_count;
+    private Date lastDate;
 
     //to let checkBoxDone be use once a day - Alan
     Date lastDateDone;
     Date yesterday = new Date(System.currentTimeMillis()-24*60*60*1000);
 
-    public Habit(String name, String type, int day_count) {
+    public Habit(String name, String type, int day_count, Date lastDate) {
         this.name = name;
         this.type = type;
         this.day_count = day_count;
+        this.lastDate = lastDate;
         lastDateDone = yesterday;
     }
 
@@ -45,4 +47,12 @@ public class Habit {
     //to let checkBoxDone be use once a day - Alan
     public Date getLastDateDone() { return lastDateDone; }
     public void setLastDateDone(Date lastDateDone) { this.lastDateDone = lastDateDone; }
+
+    public Date getLastDate() {
+        return lastDate;
+    }
+
+    public void setLastDate(Date lastDate) {
+        this.lastDate = lastDate;
+    }
 }

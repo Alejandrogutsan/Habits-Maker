@@ -38,6 +38,7 @@ public class AddingActivity extends AppCompatActivity {
         checkBoxQuit = findViewById(R.id.cb_quit);
         recommentations = findViewById(R.id.listViewRecommendations); //Alan
 
+        /*
         final ArrayList<String> recommentationsList = new ArrayList<>();
         recommentationsList.add("Take a glass of water first thing in the morning");
         recommentationsList.add("Do 5 push-ups");
@@ -58,6 +59,8 @@ public class AddingActivity extends AppCompatActivity {
                 editText.setText(recommentationsList.get(position));
             }
         });
+        */
+
 
 
         checkBoxBuild.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -93,7 +96,8 @@ public class AddingActivity extends AppCompatActivity {
                     Toast.makeText(v.getContext(), "Empty inputs", Toast.LENGTH_SHORT).show();
                 } else {
                     try {
-                        handler.insert_habit(name, type, 1);
+                        int id = (int)handler.insert_habit(name, type, 1);
+                        handler.insert_Settings(id, 1,1,1,1,1);
 
                         Intent intent = new Intent();
                         if (checkBoxBuild.isChecked()) {

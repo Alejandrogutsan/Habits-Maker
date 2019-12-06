@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,8 +36,15 @@ public class GoalFragment extends Fragment {
         super.onCreate(savedInstanceState);
         dbHandler = new DatabaseHandler(getContext(), DatabaseHandler.DATABASE_NAME, null, DatabaseHandler.DATABASE_VERSION);
         Cursor c = dbHandler.getAllHabits();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
         while (c.moveToNext()) {
-            habitList.add(new Habit(c.getString(1), c.getString(2), c.getInt(3)));
+            try {
+                habitList.add(new Habit(c.getString(1), c.getString(2), c.getInt(3), dateFormat.parse(c.getString(4))));
+            }
+            catch (ParseException e) {
+
+            }
         }
     }
 

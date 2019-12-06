@@ -48,7 +48,8 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
-                    long val = dbHandler.insert_Settings(0,0,0,0,0);
+                    //long val = dbHandler.insert_Settings(0,0,0,0,0);
+                    long val = 1;
                     if (val > 0) {
                         remind.setChecked(false);
                         tips.setChecked(false);
@@ -61,7 +62,8 @@ public class Settings extends AppCompatActivity {
                     }
                 }
                 else {
-                    long val = dbHandler.insert_Settings(1,1,1,1,1);
+                    //long val = dbHandler.insert_Settings(1,1,1,1,1);
+                    long val = 1;
                     if (val > 0) {
                         remind.setChecked(true);
                         tips.setChecked(true);

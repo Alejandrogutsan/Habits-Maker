@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +33,15 @@ public class HabitListFragment extends Fragment implements MyRecyclerViewAdapter
         super.onCreate(savedInstanceState);
         dbHandler = new DatabaseHandler(getContext(), DatabaseHandler.DATABASE_NAME, null, DatabaseHandler.DATABASE_VERSION);
         Cursor c = dbHandler.getAllHabits();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
         while (c.moveToNext()) {
-            habitList.add(new Habit(c.getString(1), c.getString(2), c.getInt(3)));
+            try {
+                habitList.add(new Habit(c.getString(1), c.getString(2), c.getInt(3), dateFormat.parse(c.getString(4))));
+            }
+            catch (ParseException e) {
+
+            }
         }
     }
 
@@ -57,6 +66,7 @@ public class HabitListFragment extends Fragment implements MyRecyclerViewAdapter
         intent.putExtra("name", habitList.get(position).getName());
         intent.putExtra("day_count", String.valueOf(habitList.get(position).getDay_count()));
         intent.putExtra("id", position);
+        intent.putExtra("lastDate", habitList.get(position).getLastDate().toString());
         startActivityForResult(intent, 1);
     }
 }
