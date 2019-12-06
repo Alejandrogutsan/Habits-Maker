@@ -1,10 +1,12 @@
 package ca.georgebrown.comp3074.prototype2;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +27,7 @@ public class Settings extends AppCompatActivity {
     ImageButton goals;
     ImageButton challenge;
     ImageButton settings;
+    ImageView logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +41,12 @@ public class Settings extends AppCompatActivity {
         tips = (Switch) findViewById(R.id.s_tip);
         recom = (Switch) findViewById(R.id.s_rec);
         challeng = (Switch) findViewById(R.id.s_chal);
-        home= (ImageButton) findViewById(R.id.imageButtonHome);
-        profile=(ImageButton) findViewById(R.id.imageButtonProfile);
+        home = (ImageButton) findViewById(R.id.imageButtonHome);
+        profile =(ImageButton) findViewById(R.id.imageButtonProfile);
         goals =(ImageButton) findViewById(R.id.imageButtonGoals);
-        challenge=(ImageButton) findViewById(R.id.imageButtonChallenge);
-        settings=(ImageButton) findViewById(R.id.imageButtonSettings);
+        challenge = (ImageButton) findViewById(R.id.imageButtonChallenge);
+        settings = (ImageButton) findViewById(R.id.imageButtonSettings);
+        logout = findViewById(R.id.imageButtonLogout);
 
         disAll.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -125,10 +129,19 @@ public class Settings extends AppCompatActivity {
             }
         });
 
+        logout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void openAbout(){
         Intent intent = new Intent(this, About.class);
         startActivity(intent);
     }
+
 }
