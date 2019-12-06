@@ -27,8 +27,8 @@ public class ChallengeActivity extends AppCompatActivity {
         goals =(ImageButton) findViewById(R.id.imageButtonGoals);
         challenge=(ImageButton) findViewById(R.id.imageButtonChallenge);
         settings=(ImageButton) findViewById(R.id.imageButtonSettings);
-
         btnContact = findViewById(R.id.btnContact);
+
         btnContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
