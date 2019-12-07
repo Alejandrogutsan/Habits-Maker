@@ -41,6 +41,8 @@ public class SignUp extends AppCompatActivity {
                 if (pass.equals(cnfPass)) {
                     long val = dbHandler.addUser(name, email, pass);
                     if (val > 0) {
+                        int id = (int)val;
+                        long insSettings = dbHandler.insert_Settings(id,1,1,1,1,1);
                         Toast.makeText(v.getContext(), "You have registered", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), Login.class);
                         startActivity(intent);

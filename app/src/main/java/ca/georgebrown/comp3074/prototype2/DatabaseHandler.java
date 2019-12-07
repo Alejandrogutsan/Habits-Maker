@@ -93,6 +93,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //db.insertOrThrow("User", "", contentValues);
     }
 
+    public int getUserID(String email) {
+        return 1;
+    }
+
     public Boolean checkUser(String email, String pass) {
         String[] columns = {col_1};
         SQLiteDatabase db = getReadableDatabase();
@@ -107,9 +111,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         else {return false;}
     }
 
-    public Cursor getAllSettings() {
+    public Cursor getAllSettings(int id) {
         SQLiteDatabase db = getReadableDatabase();
-        final String query = "SELECT * FROM Settings";
+        final String query = "SELECT * FROM Settings WHERE '" + col_1 + "' = + '" + id +"'";
         Cursor c = db.rawQuery(query, null);
         return c;
     }
