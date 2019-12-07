@@ -52,7 +52,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         // Google java date object set time to 0s
         // Try using a Calendar object to get the current date and remove the time
-        // Figure out how to go to yesyerday
 
         lastDateDone = yesterday;
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
