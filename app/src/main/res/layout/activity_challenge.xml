@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:background="#F7F7F3"
         android:text='Reading the book "Master the day"'
-        android:onClick="onCheckboxClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -26,7 +25,6 @@
         android:layout_height="wrap_content"
         android:background="#F7F7F3"
         android:text="Do 100 Pushups everyday"
-        android:onClick="onCheckboxClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -40,7 +38,6 @@
         android:layout_height="wrap_content"
         android:background="#F7F7F3"
         android:text="Listening English 20 minutes everyday"
-        android:onClick="onCheckboxClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.583"

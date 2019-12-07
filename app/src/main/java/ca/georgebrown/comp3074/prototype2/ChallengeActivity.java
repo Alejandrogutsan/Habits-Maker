@@ -10,6 +10,9 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChallengeActivity extends AppCompatActivity {
 
     protected Button btnShare;
@@ -23,6 +26,7 @@ public class ChallengeActivity extends AppCompatActivity {
     CheckBox habit3;
     EditText msg;
     String toShare = "";
+    List<CheckBox> habits = new ArrayList<CheckBox>();
 
 
     @Override
@@ -40,12 +44,38 @@ public class ChallengeActivity extends AppCompatActivity {
         habit2 = findViewById(R.id.cbHabit2);
         habit3 = findViewById(R.id.cbHabit3);
         msg = findViewById(R.id.etMessage);
+        habits.add(habit1);
+        habits.add(habit2);
+        habits.add(habit3);
+
+
 
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(v.getContext(),ContactListActivity.class);
-                startActivity(i);
+             //e.g. msg will be "Try making those habits too!" and then each one will be in text on new lines
+                if(msg.getText().toString().trim().isEmpty()){
+                    msg.setText("Try to make more habits too!");
+                }
+                else {
+                    toShare = msg.getText().toString() + "\n";
+                }
+
+                for (CheckBox habit : habits){
+                    if(habit.isChecked()) {
+                        toShare = toShare + habit.getText().toString()+"\n";
+                    }
+
+                }
+                
+
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, toShare.trim());
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
             }
         });
 
@@ -90,33 +120,4 @@ public class ChallengeActivity extends AppCompatActivity {
 
     }
 
-    public void onCheckboxClicked(View view) {
-        boolean checked = ((CheckBox) view).isChecked();
-
-        switch(view.getId()) {
-            case R.id.cbHabit1:
-                if (checked){
-                    toShare.concat('"' + habit1.getText().toString() + '"'+"\n");
-                }
-                else
-
-                break;
-            case R.id.cbHabit2:
-                if (checked){
-                    toShare.concat('"' + habit2.getText().toString() + '"'+"\n");
-                }
-                else
-
-                break;
-            case R.id.cbHabit3:
-                if (checked){
-                    toShare.concat('"' + habit3.getText().toString() + '"'+"\n");
-                }
-                else
-
-                break;
-            default:
-                toShare = msg.getText().toString() + toShare;
-        }
-    }
 }
