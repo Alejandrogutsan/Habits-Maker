@@ -4,18 +4,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ChallengeActivity extends AppCompatActivity {
 
-    protected Button btnContact;
+    protected Button btnShare;
     ImageButton home;
     ImageButton profile;
     ImageButton goals;
     ImageButton challenge;
     ImageButton settings;
+    CheckBox habit1;
+    CheckBox habit2;
+    CheckBox habit3;
+    EditText msg;
+    String toShare = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +35,13 @@ public class ChallengeActivity extends AppCompatActivity {
         goals =(ImageButton) findViewById(R.id.imageButtonGoals);
         challenge=(ImageButton) findViewById(R.id.imageButtonChallenge);
         settings=(ImageButton) findViewById(R.id.imageButtonSettings);
-        btnContact = findViewById(R.id.btnContact);
+        btnShare = findViewById(R.id.btnShare);
+        habit1 = findViewById(R.id.cbHabit1);
+        habit2 = findViewById(R.id.cbHabit2);
+        habit3 = findViewById(R.id.cbHabit3);
+        msg = findViewById(R.id.etMessage);
 
-        btnContact.setOnClickListener(new View.OnClickListener() {
+        btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(v.getContext(),ContactListActivity.class);
@@ -75,5 +87,36 @@ public class ChallengeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+
+    public void onCheckboxClicked(View view) {
+        boolean checked = ((CheckBox) view).isChecked();
+
+        switch(view.getId()) {
+            case R.id.cbHabit1:
+                if (checked){
+                    toShare.concat('"' + habit1.getText().toString() + '"'+"\n");
+                }
+                else
+
+                break;
+            case R.id.cbHabit2:
+                if (checked){
+                    toShare.concat('"' + habit2.getText().toString() + '"'+"\n");
+                }
+                else
+
+                break;
+            case R.id.cbHabit3:
+                if (checked){
+                    toShare.concat('"' + habit3.getText().toString() + '"'+"\n");
+                }
+                else
+
+                break;
+            default:
+                toShare = msg.getText().toString() + toShare;
+        }
     }
 }

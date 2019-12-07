@@ -7,11 +7,12 @@
     tools:context=".ChallengeActivity">
 
     <CheckBox
-        android:id="@+id/cbChal1"
+        android:id="@+id/cbHabit1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#F7F7F3"
         android:text='Reading the book "Master the day"'
+        android:onClick="onCheckboxClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -20,34 +21,36 @@
         app:layout_constraintVertical_bias="0.137" />
 
     <CheckBox
-        android:id="@+id/cbChal2"
+        android:id="@+id/cbHabit2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#F7F7F3"
         android:text="Do 100 Pushups everyday"
+        android:onClick="onCheckboxClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbChal1"
+        app:layout_constraintTop_toBottomOf="@+id/cbHabit1"
         app:layout_constraintVertical_bias="0.0" />
 
     <CheckBox
-        android:id="@+id/cbChal3"
+        android:id="@+id/cbHabit3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#F7F7F3"
         android:text="Listening English 20 minutes everyday"
+        android:onClick="onCheckboxClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbChal2"
+        app:layout_constraintTop_toBottomOf="@+id/cbHabit2"
         app:layout_constraintVertical_bias="0.0" />
 
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/etMessage"
         android:layout_width="0dp"
         android:layout_height="98dp"
         android:layout_marginBottom="327dp"
@@ -72,19 +75,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbChal3"
+        app:layout_constraintTop_toBottomOf="@+id/cbHabit2"
         app:layout_constraintVertical_bias="0.123" />
 
     <Button
-        android:id="@+id/btnContact"
+        android:id="@+id/btnShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contact"
+        android:text="Share"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/etMessage"
         app:layout_constraintVertical_bias="0.19" />
 
     <ImageButton
