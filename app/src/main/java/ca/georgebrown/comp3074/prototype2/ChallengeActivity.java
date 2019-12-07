@@ -53,7 +53,6 @@ public class ChallengeActivity extends AppCompatActivity {
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             //e.g. msg will be "Try making those habits too!" and then each one will be in text on new lines
                 if(msg.getText().toString().trim().isEmpty()){
                     msg.setText("Try to make more habits too!");
                 }
@@ -67,7 +66,6 @@ public class ChallengeActivity extends AppCompatActivity {
                     }
 
                 }
-                
 
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
@@ -117,7 +115,6 @@ public class ChallengeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
 }
