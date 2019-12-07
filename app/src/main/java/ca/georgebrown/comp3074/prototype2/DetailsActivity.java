@@ -33,7 +33,7 @@ public class DetailsActivity extends AppCompatActivity {
 
 
     // TODO: when creating a habit save lastDateDone in the database
-    // TODO: when checkBox is checked update lastDateDone= toDay and saved in the database
+    // TODO: when checkBox is checked, update lastDateDone= toDay and saved in the database
 
 
     @Override
