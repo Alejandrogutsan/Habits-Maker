@@ -50,32 +50,9 @@ public class Login extends AppCompatActivity {
 
                 if (res) {
                     int id = dbHandler.getUserID(email);
-                    if (dbHandler.getAllSettings(id).getCount() > 0) {
-                    Cursor c = dbHandler.getAllSettings(id);
-                        if (c.getInt(1) == 1) {
-                            disAll.setChecked(true);
-                            remind.setChecked(false);
-                            tips.setChecked(false);
-                            recom.setChecked(false);
-                            challeng.setChecked(false);
-                        }
-                        else {
-                            disAll.setChecked(false);
-                            if (c.getInt(2) == 1) {remind.setChecked(true);}
-                            else { remind.setChecked(false);}
-                            if (c.getInt(3) == 1) {tips.setChecked(true);}
-                            else { tips.setChecked(false);}
-                            if (c.getInt(4) == 1) {recom.setChecked(true);}
-                            else { recom.setChecked(false);}
-                            if (c.getInt(5) == 1) {challeng.setChecked(true);}
-                            else { challeng.setChecked(false);}
-                        }
-                        }
-                    else {
-                        long insSettings = dbHandler.insert_Settings(id, 0, 1, 1, 1, 1);
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
-                    }
+                    long insSettings = dbHandler.insert_Settings(id,1,1,1,1,1);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
                 }
                 else {
                     Toast.makeText(v.getContext(),"Wrong username or password", Toast.LENGTH_SHORT).show();
