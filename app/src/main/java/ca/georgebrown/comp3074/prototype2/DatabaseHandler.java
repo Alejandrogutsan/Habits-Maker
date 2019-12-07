@@ -93,7 +93,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public int getUserID(String email) {
-        return 1;
+        String[] column = {col_1};
+        SQLiteDatabase db = getReadableDatabase();
+        String selection = col_3 + "=?";
+        String[] selectionArgs = {email};
+        Cursor cursor = db.query("User",column,selection,selectionArgs,null,null,null);
+        return cursor.getInt(0);
     }
 
     public Boolean checkUser(String email, String pass) {
