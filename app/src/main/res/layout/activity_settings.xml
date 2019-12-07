@@ -120,42 +120,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_notif" />
 
-    <TextView
-        android:id="@+id/tv_about"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="296dp"
-        android:layout_marginRight="296dp"
-        android:text="About"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/s_chal" />
-
-    <TextView
+    <Button
         android:id="@+id/tv_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:layout_marginBottom="177dp"
-        android:clickable="true"
-        android:text="About Us                                                                      >"
-        android:textSize="15sp"
-        app:fontFamily="sans-serif-light"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="299dp"
+        android:layout_marginRight="299dp"
+        android:text="About Us"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_about" />
+        app:layout_constraintTop_toBottomOf="@+id/s_chal" />
 
     <RelativeLayout
         android:layout_width="match_parent"
