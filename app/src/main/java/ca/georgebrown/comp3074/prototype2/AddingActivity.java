@@ -38,7 +38,7 @@ public class AddingActivity extends AppCompatActivity {
         checkBoxQuit = findViewById(R.id.cb_quit);
         recommentations = findViewById(R.id.listViewRecommendations); //Alan
 
-        /*
+        //RECOMENDATION LIST
         final ArrayList<String> recommentationsList = new ArrayList<>();
         recommentationsList.add("Take a glass of water first thing in the morning");
         recommentationsList.add("Do 5 push-ups");
@@ -49,17 +49,16 @@ public class AddingActivity extends AppCompatActivity {
         recommentationsList.add("One apple a day keeps the doctor away");
         recommentationsList.add("Help with the dishes");
         recommentationsList.add("Take a short walk today");
-        ArrayAdapter arrayAdapter = new ArrayAdapter(
-                this, android.R.layout.simple_list_item_activated_1,recommentationsList);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_activated_1,recommentationsList);
         recommentations.setAdapter(arrayAdapter);
         recommentations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             //recommendations from listView to editText - Alan
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                editText.setText(recommentationsList.get(position));
+                editText.setText(recommentationsList.get(position).toString());
             }
         });
-        */
+
 
 
 

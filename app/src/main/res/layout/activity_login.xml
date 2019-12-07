@@ -36,7 +36,6 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
-        android:text="Alan@gbc.ca"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -49,7 +48,6 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:text="admin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
