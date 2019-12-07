@@ -112,7 +112,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public Cursor getAllSettings(int id) {
         SQLiteDatabase db = getReadableDatabase();
-        final String query = "SELECT * FROM Settings WHERE '" + col_1 + "' = + '" + id +"'";
+        final String query = "SELECT * FROM Settings WHERE '" + col_1 + "'='" + id +"'";
         Cursor c = db.rawQuery(query, null);
         return c;
     }
