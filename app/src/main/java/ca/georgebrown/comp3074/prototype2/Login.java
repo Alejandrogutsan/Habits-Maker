@@ -49,8 +49,6 @@ public class Login extends AppCompatActivity {
                 Boolean res = dbHandler.checkUser(email, pwd);
 
                 if (res) {
-                    int id = dbHandler.getUserID(email);
-                    long insSettings = dbHandler.insert_Settings(id,1,1,1,1,1);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 }
