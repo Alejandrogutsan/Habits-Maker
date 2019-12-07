@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfilePage"></activity>
+        <service
+            android:name=".NotifyService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity android:name=".ProfilePage" />
         <activity android:name=".AddingActivity" />
         <activity android:name=".DetailsActivity" />
         <activity android:name=".MainActivity" />

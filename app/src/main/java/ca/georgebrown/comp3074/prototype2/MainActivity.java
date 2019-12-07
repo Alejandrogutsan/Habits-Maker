@@ -1,8 +1,12 @@
 package ca.georgebrown.comp3074.prototype2;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
-
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.preference.PreferenceManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.annotation.Nullable;
@@ -13,7 +17,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -21,6 +27,7 @@ import java.util.Date;
  */
 
 public class MainActivity extends FragmentActivity {
+    private PendingIntent pendingIntent;
     public static final int CODE = 123;
     public DatabaseHandler databaseHandler;
 
@@ -44,6 +51,17 @@ public class MainActivity extends FragmentActivity {
         goals =(ImageButton) findViewById(R.id.imageButtonGoals);
         challenge=(ImageButton) findViewById(R.id.imageButtonChallenge);
         settings=(ImageButton) findViewById(R.id.imageButtonSettings);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        int i = preferences.getInt("numberoflaunches", 1);
+
+        if (i < 2){
+            alarmMethod();
+            i++;
+            editor.putInt("numberoflaunches", i);
+            editor.commit();
+        }
 
         HabitListFragment fragment = new HabitListFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.container, fragment).commit();
@@ -121,6 +139,23 @@ public class MainActivity extends FragmentActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    private void alarmMethod(){
+        Intent myIntent = new Intent(this , NotifyService.class);
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        pendingIntent = PendingIntent.getService(this, 0, myIntent, 0);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.HOUR, 0);
+        calendar.set(Calendar.AM_PM, Calendar.PM);
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
+
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000*60*60*24 , pendingIntent);
+
+        Toast.makeText(MainActivity.this,"Start Notification", Toast.LENGTH_LONG).show();
     }
 
     @Override
