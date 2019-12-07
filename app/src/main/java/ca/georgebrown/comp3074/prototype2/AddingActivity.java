@@ -55,7 +55,7 @@ public class AddingActivity extends AppCompatActivity {
             //recommendations from listView to editText - Alan
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                editText.setText(recommentationsList.get(position).toString());
+                editText.setText(recommentationsList.get(position));
             }
         });
 
