@@ -38,8 +38,8 @@ public class Login extends AppCompatActivity {
         disAll = (Switch) findViewById(R.id.s_dis);
         remind = (Switch) findViewById(R.id.s_rem);
         tips = (Switch) findViewById(R.id.s_tip);
-        recom = (Switch) findViewById(R.id.s_rec);
-        challeng = (Switch) findViewById(R.id.s_chal);
+        //recom = (Switch) findViewById(R.id.s_rec);
+        //challeng = (Switch) findViewById(R.id.s_chal);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

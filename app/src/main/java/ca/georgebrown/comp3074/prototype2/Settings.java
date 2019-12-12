@@ -39,8 +39,8 @@ public class Settings extends AppCompatActivity {
         disAll = (Switch) findViewById(R.id.s_dis);
         remind = (Switch) findViewById(R.id.s_rem);
         tips = (Switch) findViewById(R.id.s_tip);
-        recom = (Switch) findViewById(R.id.s_rec);
-        challeng = (Switch) findViewById(R.id.s_chal);
+        //recom = (Switch) findViewById(R.id.s_rec);
+        //challeng = (Switch) findViewById(R.id.s_chal);
         home = (ImageButton) findViewById(R.id.imageButtonHome);
         profile =(ImageButton) findViewById(R.id.imageButtonProfile);
         goals =(ImageButton) findViewById(R.id.imageButtonGoals);
@@ -57,8 +57,8 @@ public class Settings extends AppCompatActivity {
                     if (val > 0) {
                         remind.setChecked(false);
                         tips.setChecked(false);
-                        recom.setChecked(false);
-                        challeng.setChecked(false);
+                        //recom.setChecked(false);
+                        //challeng.setChecked(false);
                         Toast.makeText(getBaseContext(), "Your settings are all OFF", Toast.LENGTH_SHORT).show();
                     }
                     else {
@@ -71,8 +71,8 @@ public class Settings extends AppCompatActivity {
                     if (val > 0) {
                         remind.setChecked(true);
                         tips.setChecked(true);
-                        recom.setChecked(true);
-                        challeng.setChecked(true);
+                        //recom.setChecked(true);
+                        //challeng.setChecked(true);
                         Toast.makeText(getBaseContext(), "Your settings are all ON", Toast.LENGTH_SHORT).show();
                     }
                     else {

@@ -43,10 +43,10 @@ public class ChallengeActivity extends AppCompatActivity {
         habit1 = findViewById(R.id.cbHabit1);
         habit2 = findViewById(R.id.cbHabit2);
         habit3 = findViewById(R.id.cbHabit3);
-        msg = findViewById(R.id.etMessage);
         habits.add(habit1);
         habits.add(habit2);
         habits.add(habit3);
+        msg = findViewById(R.id.etMessage);
 
 
 
@@ -86,7 +86,6 @@ public class ChallengeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +93,6 @@ public class ChallengeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         goals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,14 +100,12 @@ public class ChallengeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         challenge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

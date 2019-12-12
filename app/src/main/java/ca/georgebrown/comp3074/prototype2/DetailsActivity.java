@@ -26,11 +26,7 @@ public class DetailsActivity extends AppCompatActivity {
     //to let checkBoxDone be use once a day - Alan
     Date lastDateDone;
     Date yesterday = new Date(System.currentTimeMillis()-24*60*60*1000);
-    String strDate = DateFormat.getDateInstance().format(yesterday);
-    String date = "Dec 4, 2019";
-
-
-
+    String strDate = DateFormat.getDateInstance().format(yesterday); //format: "Dec 4, 2019"
 
     // TODO: when creating a habit save lastDateDone in the database
     // TODO: when checkBox is checked, update lastDateDone= toDay and saved in the database
@@ -55,10 +51,11 @@ public class DetailsActivity extends AppCompatActivity {
         // Alan's
         handler.getAllHabits();
 
-        message.setText("Gettin lastDayDone from db: "+ getIntent().getStringExtra("lastDate"));
+        //message.setText("Gettin lastDayDone from db: "+ getIntent().getStringExtra("lastDate"));
+        message.setText("Check 'Done' and click 'UPDATE' to record your progress");
         try {
             String test = getIntent().getStringExtra("lastDate");
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             Date date = dateFormat.parse(test);
             message.setText("Gettin lastDayDone from db: "+ getIntent().getStringExtra("lastDate"));
         }
